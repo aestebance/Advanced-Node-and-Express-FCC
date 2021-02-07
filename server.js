@@ -26,10 +26,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  store: store,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { secure: false },
+  key: 'express.sid',
+  store: store
 }));
 
 app.use(passport.initialize());
