@@ -33,10 +33,10 @@ myDB(async client => {
   const myDataBase = await client.db('freeCodeCamp').collection('users');
   routes(app, myDataBase);
   auth(app, myDataBase);
-  let currentUser = 0;
+  let currentUsers = 0;
   io.on('connection', socket => {
-    ++currentUser;
-    io.emit('user count', currentUser);
+    ++currentUsers;
+    io.emit('user count', currentUsers);
     console.log('A user has connected');
   });
   // Be sure to change the title
