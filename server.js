@@ -69,6 +69,12 @@ myDB(async client => {
         connected: false
       });
     });
+    socket.on('chat message', (data) => {
+      io.emit('chat message', {
+        name: socket.request.user.username,
+        message: data
+      });
+    });
   });
   // Be sure to change the title
 }).catch(e => {
