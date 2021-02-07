@@ -46,7 +46,7 @@ module.exports = function (app, myDataBase) {
 
   app.route('/login')
     .post(passport.authenticate('local', {failureRedirect: '/'}), (req, res) => {
-    res.redirect('/profile')
+    res.redirect('/chat')
   });
 
   app.route('/auth/github')
