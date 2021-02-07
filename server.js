@@ -33,13 +33,11 @@ myDB(async client => {
   const myDataBase = await client.db('freeCodeCamp').collection('users');
   routes(app, myDataBase);
   auth(app, myDataBase);
+  let currentUser = 0;
   io.on('connection', socket => {
-    console.log('A user has connected');
     ++currentUser;
     io.emit('user count', currentUser);
-    socket.on('user count', function(data) {
-      console.log(data);
-    });
+    console.log('A user has connected');
   });
   // Be sure to change the title
 }).catch(e => {
@@ -49,7 +47,6 @@ myDB(async client => {
 });
 
 const PORT = process.env.PORT || 3000;
-let currentUser = 0;
 http.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
 });
